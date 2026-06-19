@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BigQuery Release Notes Hub</title>
+    <meta name="description" content="Stay updated with the latest Google Cloud BigQuery features, deprecations, and improvements. Quick search, filter, and tweet updates.">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Background Elements -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <div class="bq-logo-icon">
+                    <i class="fa-solid fa-database"></i>
+                    <i class="fa-solid fa-bolt overlay-icon"></i>
+                </div>
+                <div>
+                    <h1 id="main-title">BigQuery Release Notes</h1>
+                    <p class="subtitle">Real-time updates, features, and deprecations from Google Cloud</p>
+                </div>
+            </div>
+            
+            <div class="header-actions">
+                <button id="refresh-btn" class="btn btn-primary" title="Refresh Release Notes">
+                    <i id="spinner-icon" class="fa-solid fa-arrows-rotate"></i>
+                    <span>Refresh</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Search and Filters Section -->
+        <section class="controls-section">
+            <div class="search-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="search-input" placeholder="Search releases by keyword, date, or feature..." autocomplete="off">
+                <button id="clear-search-btn" class="clear-search-btn" style="display: none;">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="stats-wrapper">
+                <span class="pulse-indicator"></span>
+                <span id="releases-count">Showing 0 updates</span>
+            </div>
+        </section>
+
+        <!-- Releases Feed Container -->
+        <main class="releases-feed" id="releases-container">
+            <!-- Cards will be dynamically injected here -->
+            <div class="loading-state">
+                <div class="shimmer-card"></div>
+                <div class="shimmer-card"></div>
+                <div class="shimmer-card"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>BigQuery Release Notes Hub &bull; Powered by Flask &amp; Atom Feeds</p>
+        </footer>
+    </div>
+
+    <!-- Twitter Composer Modal -->
+    <div id="tweet-modal" class="modal-overlay" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-card">
+            <div class="modal-header">
+                <div class="modal-title-wrapper">
+                    <i class="fa-brands fa-x-twitter modal-logo"></i>
+                    <h2 id="modal-title">Compose Tweet</h2>
+                </div>
+                <button id="close-modal-btn" class="close-btn" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="original-reference">
+                    <span class="ref-label">Reference Update:</span>
+                    <p id="ref-update-title" class="ref-title"></p>
+                </div>
+                <div class="textarea-wrapper">
+                    <textarea id="tweet-textarea" placeholder="What's happening?" maxlength="280"></textarea>
+                    <div class="textarea-footer">
+                        <span id="char-counter" class="char-counter">280</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancel-tweet-btn" class="btn btn-secondary">Cancel</button>
+                <button id="send-tweet-btn" class="btn btn-twitter">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <span>Tweet now</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
