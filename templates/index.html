@@ -34,6 +34,35 @@
             </div>
             
             <div class="header-actions">
+                <!-- Theme Toggle Switch -->
+                <div class="theme-switch-wrapper" title="Toggle Light/Dark Theme">
+                    <i class="fa-solid fa-moon theme-icon"></i>
+                    <label class="theme-switch" for="theme-checkbox">
+                        <input type="checkbox" id="theme-checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <i class="fa-solid fa-sun theme-icon"></i>
+                </div>
+
+                <!-- Export Dropdown -->
+                <div class="export-dropdown" id="export-dropdown-container">
+                    <button id="export-btn" class="btn btn-secondary" title="Export Release Notes">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Export</span>
+                        <i class="fa-solid fa-chevron-down dropdown-arrow"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <button id="export-csv-btn">
+                            <i class="fa-solid fa-file-csv"></i>
+                            <span>Export to CSV</span>
+                        </button>
+                        <button id="export-xml-btn">
+                            <i class="fa-solid fa-file-code"></i>
+                            <span>Export to XML</span>
+                        </button>
+                    </div>
+                </div>
+
                 <button id="refresh-btn" class="btn btn-primary" title="Refresh Release Notes">
                     <i id="spinner-icon" class="fa-solid fa-arrows-rotate"></i>
                     <span>Refresh</span>
